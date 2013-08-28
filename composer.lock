@@ -1,0 +1,67 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "003ea12312a70ae7bd3e44e0c8040a9f",
+    "packages": [
+        {
+            "name": "podio/podio-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/podio/podio-php.git",
+                "reference": "4ca437fc59e11fe67cee95710a14ddf144b2e2c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/podio/podio-php/zipball/4ca437fc59e11fe67cee95710a14ddf144b2e2c8",
+                "reference": "4ca437fc59e11fe67cee95710a14ddf144b2e2c8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/",
+                    "models/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Haugstrup Pedersen",
+                    "email": "haugstrup@podio.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Client for Podio API",
+            "homepage": "http://github.com/podio/podio-php",
+            "keywords": [
+                "podio"
+            ],
+            "time": "2013-08-28 07:06:33"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "podio/podio-php": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

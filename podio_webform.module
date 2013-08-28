@@ -40,7 +40,7 @@
 
 //   return $items;
 // }
-//
+
 
 
 
@@ -62,9 +62,16 @@
  */
 function podio_webform_webform_submission_insert($node, $submission) {
   $data = $submission -> data;
-  $node['webform']['components'];
+  $webform = $node -> webform;
+
+  $values = array();
+  $components = array();
+  foreach($webform['components'] as $k => $v ){
+    $components[$k] = $v['form_key'];
+  }
   dpm($submission);
   dpm($node);
-
-
+  dpm($webform);
+  dpm($data);
+  dpm($components);
 }

@@ -1,0 +1,12 @@
+{
+    "name": "nu-lts/podio_webform",
+    "authors": [
+        {
+            "name": "Steven Bassett",
+            "email": "steven.j.bassett@gmail.com"
+        }
+    ],
+    "require": {
+      "podio/podio-php": "dev-master"
+    }
+}
