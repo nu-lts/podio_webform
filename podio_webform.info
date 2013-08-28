@@ -1,0 +1,5 @@
+name = Podio Webform Connector
+description = Uses the Podio API to forward report a problem submission data to our issue queue app on Podio.com
+dependencies[] = webform
+package = Custom
+core = 7.x

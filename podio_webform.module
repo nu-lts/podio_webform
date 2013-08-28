@@ -1,0 +1,56 @@
+<?php
+/**
+ * @file podio_webform.module
+ * TODO: Enter file description here.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function podio_webform_menu() { 
+  // This is the minimum information you can provide for a menu item.
+  $items['podio_webform'] = array(
+    'title' => 'TODO: Enter menu item title',
+    'page callback' => 'TODO: Enter callback function',
+    'access arguments' => array('TODO: Enter user permissions'),
+  );
+  // This is a menu item for a form.
+  $items['podio_webform/admin'] = array(
+    'title' => 'TODO: Enter menu item title',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('podio_webform_form'),
+    'access arguments' => array('TODO: Enter user permissions'),
+  );
+  // More complex menu item.
+  $items['podio_webform/foo'] = array(
+    'title' => 'TODO: Enter menu item title',
+    'description' => 'TODO: Enter description',
+    'page callback' => 'TODO: Enter callback function',
+    'page arguments' => array(), // An array of arguments to pass to the page callback function. Integer values pass the corresponding URL component.
+    'access callback' => '', // defaults to user_access()
+    'access arguments' => array('TODO: Enter user permissions'),
+    'weight' => 0,
+    'type' => MENU_NORMAL_ITEM, // One of MENU_NORMAL_ITEM / MENU_CALLBACK / MENU_SUGGESTED_ITEM / MENU_LOCAL_TASK / MENU_DEFAULT_LOCAL_TASK
+    'file' => 'podio_webform.admin.inc',
+    'menu_name' => '', // Menu to place this item in.
+    'title callback' => '', // Function to generate the title, defaults to t(). 
+    'title arguments' => array(), // Arguments to send to t() or your custom callback. 
+  );
+  // OPTIONAL: Fill in additional menu items
+
+  return $items;
+}
+
+/**
+ * Implements hook_webform_submission_insert().
+ */
+function podio_webform_webform_submission_insert($node, $submission) {
+  // Insert a record into a 3rd-party module table when a submission is added.
+  db_insert('mymodule_table')
+    ->fields(array(
+      'nid' => $node->nid,
+      'sid' => $submission->sid,
+      'foo' => 'foo_data',
+    ))
+    ->execute();
+}
