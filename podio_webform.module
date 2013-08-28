@@ -43,7 +43,6 @@ require_once __DIR__ . '/vendor' . '/autoload.php';
 
 
 
-
 /**
  * Respond to a Webform submission being inserted.
  *
@@ -69,15 +68,15 @@ function podio_webform_webform_submission_insert($node, $submission) {
   foreach($webform['components'] as $k => $v ){
     $components[$k]['formkey'] = $v['form_key'];
   }
+  foreach($data as $k => $v){
+    $components[$k]['value'][] = $v['value'];
+  }
   dpm($submission);
   dpm($node);
   dpm($webform);
   dpm($data);
   dpm($components);
+
 }
 
 
-
-/**
- *
- */
