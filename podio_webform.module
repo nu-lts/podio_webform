@@ -3,7 +3,7 @@
  * @file podio_webform.module
  * TODO: Enter file description here.
  */
-
+require_once __DIR__ . '/vendor' . '/autoload.php';
 // /**
 //  * Implements hook_menu().
 //  */
@@ -67,7 +67,7 @@ function podio_webform_webform_submission_insert($node, $submission) {
   $values = array();
   $components = array();
   foreach($webform['components'] as $k => $v ){
-    $components[$k] = $v['form_key'];
+    $components[$k]['formkey'] = $v['form_key'];
   }
   dpm($submission);
   dpm($node);
@@ -75,3 +75,9 @@ function podio_webform_webform_submission_insert($node, $submission) {
   dpm($data);
   dpm($components);
 }
+
+
+
+/**
+ *
+ */
