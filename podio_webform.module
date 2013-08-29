@@ -4,49 +4,27 @@
  * TODO: Enter file description here.
  */
 require_once __DIR__ . '/vendor' . '/autoload.php';
-// /**
-//  * Implements hook_menu().
-//  */
-// function podio_webform_menu() {
-//   // This is the minimum information you can provide for a menu item.
-//   $items['podio_webform'] = array(
-//     'title' => 'TODO: Enter menu item title',
-//     'page callback' => 'TODO: Enter callback function',
-//     'access arguments' => array('TODO: Enter user permissions'),
-//   );
-//   // This is a menu item for a form.
-//   $items['podio_webform/admin'] = array(
-//     'title' => 'TODO: Enter menu item title',
-//     'page callback' => 'drupal_get_form',
-//     'page arguments' => array('podio_webform_form'),
-//     'access arguments' => array('TODO: Enter user permissions'),
-//   );
-//   // More complex menu item.
-//   $items['podio_webform/foo'] = array(
-//     'title' => 'TODO: Enter menu item title',
-//     'description' => 'TODO: Enter description',
-//     'page callback' => 'TODO: Enter callback function',
-//     'page arguments' => array(), // An array of arguments to pass to the page callback function. Integer values pass the corresponding URL component.
-//     'access callback' => '', // defaults to user_access()
-//     'access arguments' => array('TODO: Enter user permissions'),
-//     'weight' => 0,
-//     'type' => MENU_NORMAL_ITEM, // One of MENU_NORMAL_ITEM / MENU_CALLBACK / MENU_SUGGESTED_ITEM / MENU_LOCAL_TASK / MENU_DEFAULT_LOCAL_TASK
-//     'file' => 'podio_webform.admin.inc',
-//     'menu_name' => '', // Menu to place this item in.
-//     'title callback' => '', // Function to generate the title, defaults to t().
-//     'title arguments' => array(), // Arguments to send to t() or your custom callback.
-//   );
-//   // OPTIONAL: Fill in additional menu items
+ /**
+  * Implements hook_menu().
+  */
+ function podio_webform_menu() {
+  $items['admin/config/podio_webform'] = array(
+      'title' => t('Podio Webform'),
+      'description' => t('Provides the configuration page for the webform to podio module for issue tracking.'),
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('podio_webform_admin_settings'),
+      'access arguments' => array('access administration pages'),
+      'file' => 'podio_webform.admin.inc',
+      'file path' => drupal_get_path('module', 'podio_webform'),
+  );
 
-//   return $items;
-// }
-
+   return $items;
+ }
 
 
 /**
- * Respond to a Webform submission being inserted.
- *
- * Note that this hook is called after a submission has already been saved to
+ * Implements hook_webform_submission_insert().
+ *  * Note that this hook is called after a submission has already been saved to
  * the database. If needing to modify the submission prior to insertion, use
  * hook_webform_submission_presave().
  *
@@ -54,10 +32,6 @@ require_once __DIR__ . '/vendor' . '/autoload.php';
  *   The Webform node on which this submission was made.
  * @param $submission
  *   The Webform submission that was just inserted into the database.
- */
-
-/**
- * Implements hook_webform_submission_insert().
  */
 function podio_webform_webform_submission_insert($node, $submission) {
   $data = $submission -> data;
@@ -67,6 +41,10 @@ function podio_webform_webform_submission_insert($node, $submission) {
   $components = array();
   foreach($webform['components'] as $k => $v ){
     $components[$k]['formkey'] = $v['form_key'];
+    $components[$k]['name'] = $v['name'];
+    if($v['type'] == 'select' ){
+
+    }
   }
   foreach($data as $k => $v){
     $components[$k]['value'][] = $v['value'];
